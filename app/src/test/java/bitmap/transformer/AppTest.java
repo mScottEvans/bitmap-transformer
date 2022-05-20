@@ -3,12 +3,19 @@
  */
 package bitmap.transformer;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertTrue(false);
+    @Test void transformMethodWritesToOutputFile() {
+        // Arrange.
+        Bitmap bitmap = new Bitmap("baldy-8bit.bmp", "test.file.bmp");
+        Boolean expectResult = true;
+        // Act.
+        Boolean actualResult = bitmap.changeImgColor();
+
+        // Assert.
+        Assertions.assertEquals(expectResult, actualResult, "Should return true unless throws.");
+
     }
 }
