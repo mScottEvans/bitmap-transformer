@@ -3,12 +3,57 @@
  */
 package bitmap.transformer;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+
+public class App {
+    public static void main( String[] args) {
+        //  args will come in looking like "transform", "input_file", "output_file"
+        String userPath = System.getProperty("user.dir");
+        System.out.println(userPath);
+
+        String transformType = args[0];
+        String srcFilePath = args[1];
+        String outFilePath = args[2];
+        Bitmap bitMap = new Bitmap(srcFilePath, outFilePath);
+        bitMap.loadFile();
+        switch(transformType){
+            case "changeColor": {
+                Boolean color = bitMap.changeImgColor();
+                break;
+            }
+            case "rotate": {
+                bitMap.rotate();
+                break;
+            }
+            case "bars":{
+                bitMap.bar();
+                break;
+            }
+            default: {
+                System.out.println("Invaild input. Vaild options are \"changeColor\", \"rotate\", or \"bars\".");
+            }
+        }
+
+
+
+//String srcFilePath, String outFilePath,
+
+
+
+//        bitMap.changeColor("red");
+
+        // TODO: switch statement to select the correct method to call
+        // for example: changeColorMethod() could be called with
+        // an args input of "color"
+        // addRasterThingy() could be called with an args input of "frame"
+        // just typing out loud, these could be different
+
+        // TODO: another argument is going to be the source filename
+        // verify file exists
+        // load file
+
+        // TODO: another argument is going to be the output filename
+        // Save output_file
+        // dump transformed data to it
     }
 }
